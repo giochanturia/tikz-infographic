@@ -1,0 +1,49 @@
+\ProvidesFile{infographic-common.code.tex}[2026/01/23 Common infrastructure]
+
+\tikzset{
+  /infographic/.is family,
+  /infographic,
+}
+
+% Define angle mappings for each anchor
+\def\infographic@angle@south{270}
+\def\infographic@angle@north{90}
+\def\infographic@angle@east{0}
+\def\infographic@angle@west{180}
+
+% Define opposite angle mappings
+\def\infographic@angle@opposite@south{90}
+\def\infographic@angle@opposite@north{270}
+\def\infographic@angle@opposite@east{180}
+\def\infographic@angle@opposite@west{0}
+
+% Helper macro: convert anchor name to angle using \csname lookup
+\newcommand\infographic@anchorToAngle[1]{%
+  \expandafter\csname infographic@angle@#1\endcsname
+}
+
+% Helper macro: convert anchor name to opposite angle
+\newcommand\infographic@anchorToAngleOpposite[1]{%
+  \expandafter\csname infographic@angle@opposite@#1\endcsname
+}
+
+% Define edge corners for each anchor
+\def\infographic@corner@ONE@south{south west}
+\def\infographic@corner@TWO@south{south east}
+\def\infographic@corner@ONE@north{north west}
+\def\infographic@corner@TWO@north{north east}
+\def\infographic@corner@ONE@east{north east}
+\def\infographic@corner@TWO@east{south east}
+\def\infographic@corner@ONE@west{north west}
+\def\infographic@corner@TWO@west{south west}
+
+% Helper macros: convert anchor names to edge corners
+\newcommand\infographic@anchorToEdgeCornerONE[1]{%
+  \expandafter\csname infographic@corner@ONE@#1\endcsname
+}
+\newcommand\infographic@anchorToEdgeCornerTWO[1]{%
+  \expandafter\csname infographic@corner@TWO@#1\endcsname
+}
+
+\newif\ifinfographic@debug
+\infographic@debugfalse

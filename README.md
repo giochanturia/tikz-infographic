@@ -1,2 +1,2 @@
-# tikz-infographic
+# TikZ Infographic
 TikZ library for modern infographic elements.

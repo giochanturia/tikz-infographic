@@ -1,0 +1,35 @@
+\tikzset{
+    pics/annotation/.style={
+            code={
+                    \tikzset{/infographic/annotation/.cd,#1}
+
+                    % DOT
+                    \coordinate (info@dot) at (0, 0);
+                    \fill [color=\pgfkeysvalueof{/infographic/annotation/color}] (info@dot) circle (\pgfkeysvalueof{/infographic/annotation/dot/radius});
+
+                    % LABEL
+                    \node (info@label) at (\pgfkeysvalueof{/infographic/annotation/label/dx},
+                    \pgfkeysvalueof{/infographic/annotation/label/dy}) [
+                            color=\pgfkeysvalueof{/infographic/annotation/color},
+                            text opacity=1,
+                            fill=\pgfkeysvalueof{/infographic/annotation/color},
+                            fill opacity=0.1,
+                            anchor=\pgfkeysvalueof{/infographic/annotation/label/anchor},
+                        ]
+                    {\pgfkeysvalueof{/infographic/annotation/label/text}};
+                    % LABEL: HIGHLIGHTED EDGE
+                    \draw (info@label.\infographic@anchorToEdgeCornerONE{\pgfkeysvalueof{/infographic/annotation/label/anchor}}) [
+                            color=\pgfkeysvalueof{/infographic/annotation/color},
+                            line width=\pgfkeysvalueof{/infographic/annotation/connector/line width}
+                        ] -- (info@label.\infographic@anchorToEdgeCornerTWO{\pgfkeysvalueof{/infographic/annotation/label/anchor}});
+
+                    % CONNECTOR
+                    \draw (info@dot) 
+                    [
+                        color=\pgfkeysvalueof{/infographic/annotation/color},
+                        line width=\pgfkeysvalueof{/infographic/annotation/connector/line width}
+                    ] 
+                    to[out=\infographic@anchorToAngleOpposite{\pgfkeysvalueof{/infographic/annotation/label/anchor}}, in=\infographic@anchorToAngle{\pgfkeysvalueof{/infographic/annotation/label/anchor}}, looseness=\pgfkeysvalueof{/infographic/annotation/connector/looseness}] (info@label.\pgfkeysvalueof{/infographic/annotation/label/anchor});
+                }
+        }
+}
