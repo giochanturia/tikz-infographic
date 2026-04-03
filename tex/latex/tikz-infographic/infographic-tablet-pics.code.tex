@@ -1,0 +1,29 @@
+\tikzset{
+    pics/callout/.style={
+        code={
+            % user options
+            \tikzset{/infographic/callout/.cd,#1}
+
+            % draw the box
+            \node[
+                rectangle,
+                fill=gray!10,
+                text=gray!80!black,
+                inner sep=12pt,
+                inner xsep=18pt,
+                align=left,
+                text width=\pgfkeysvalueof{/infographic/callout/width},
+                path picture={
+                    % solid colour bar
+                    \fill[\pgfkeysvalueof{/infographic/callout/color}] 
+                        (path picture bounding box.north west) 
+                        rectangle ([xshift=6pt]path picture bounding box.south west);
+                }
+            ] (callout@box) at (0,0) {
+                % title and body
+                {\color{\pgfkeysvalueof{/infographic/callout/color}}\large\bfseries \pgfkeysvalueof{/infographic/callout/title}}\\[0.5em]
+                \pgfkeysvalueof{/infographic/callout/text}
+            };
+        }
+    }
+}

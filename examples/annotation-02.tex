@@ -1,0 +1,25 @@
+\documentclass{standalone}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{infographic}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic at (0, 0) {callout={
+        title={Title 1}, 
+        text={Beam me up, Scotty!}
+    }};
+
+    % Customised blue callout
+    \pic at (0, -4cm) {callout={
+        color=blue, 
+        width=10cm,
+        title={Title 2}, 
+        text={'Live long and prosper', said Spock.}
+    }};
+
+\end{tikzpicture}
+\end{document}
