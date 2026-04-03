@@ -1,0 +1,30 @@
+\tikzset{
+    pics/squircle/.style={
+        code={
+            % load the keys
+            \tikzset{/infographic/squircle/.cd,#1}
+            
+            % save the radius
+            \def\R{\pgfkeysvalueof{/infographic/squircle/radius}}
+
+            % parametric squircle equation
+            \filldraw[
+                fill=\pgfkeysvalueof{/infographic/squircle/color}!15,
+                draw=\pgfkeysvalueof{/infographic/squircle/color},
+                line width=2pt
+            ]
+            plot[variable=\t, domain=0:360, samples=100]
+            ( { \R * sign(cos(\t)) * sqrt(abs(cos(\t))) },
+              { \R * sign(sin(\t)) * sqrt(abs(sin(\t))) } )
+            -- cycle;
+
+            % content node
+            \node[
+                align=center,
+                text width=1.4 * \R,
+                color=\pgfkeysvalueof{/infographic/squircle/color}!60!black,
+                font=\sffamily
+            ] at (0,0) {\pgfkeysvalueof{/infographic/squircle/text}};
+        }
+    }
+}
