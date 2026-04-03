@@ -9,16 +9,13 @@
 \begin{document}
 
 \begin{tikzpicture}
-    \pic at (0, 0) {callout={
-        title={Title 1}, 
-        text={Beam me up, Scotty!}
+    \pic at (0, 0) {squircle={
+        text={This is a default squircle}
     }};
-
-    % Customised blue callout
-    \pic at (0, -4cm) {callout={
-        color=blue, 
-        width=10cm,
-        title={Title 2}, 
+    
+    \pic at (2.5cm, -4cm) {squircle={
+        color=orange, 
+        radius=2cm,
         text={'Live long and prosper', said Spock.}
     }};
 \end{tikzpicture}
