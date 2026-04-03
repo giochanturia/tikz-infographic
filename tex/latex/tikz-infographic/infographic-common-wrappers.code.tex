@@ -1,0 +1,18 @@
+\NewDocumentCommand{\infoannotation}{ O{} r() m }{
+  % #1 = optional keys
+  % #2 = coordinates
+  % #3 = body
+  \pic at (#2) {annotation={label/text={#3}, #1}};
+}
+
+\NewDocumentEnvironment{infographics}{ O{} }{
+  \begin{tikzpicture}[
+      % global options
+      every node/.style={font=\sffamily},
+      % user options
+      #1
+  ]
+}
+{
+  \end{tikzpicture}
+}

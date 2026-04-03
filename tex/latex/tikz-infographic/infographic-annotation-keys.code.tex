@@ -14,3 +14,10 @@
   connector/line width/.initial=1pt,
   connector/looseness/.initial=1,
 }
+
+\pgfkeys{
+  /infographic/annotation/text/.style   = {label/text={#1}},
+  /infographic/annotation/dx/.style     = {label/dx={#1}},
+  /infographic/annotation/dy/.style     = {label/dy={#1}},
+  /infographic/annotation/anchor/.style = {label/anchor={#1}},
+}
