@@ -9,9 +9,9 @@
 
 \begin{document}
 \begin{tikzpicture}
-    \pic at (0, 0) {annotation={label/text={Hello}}};
-    \pic at (1cm, 0) {annotation={color=blue, label/text={Hello in blue}, label/dx={1cm}}};
-    \pic at (0, -1cm) {annotation={color=orange, label/text={Hello in orange}, label/dx={1cm}, label/dy={-0.5cm}, label/anchor={north}}};
-    \pic at (1cm, -1cm) {annotation={color=red, label/text={Goodbye}, label/dx={1cm}, label/dy={0.5cm}, label/anchor={west}}};
+    \infoannotation (0, 0) {Hello};
+    \infoannotation [color=blue, dx=1cm] (1cm, 0) {Hello in blue};
+    \infoannotation [color=orange, dx=1cm, dy=-0.5cm, anchor=north] (0, -1cm) {Hello in orange};
+    \infoannotation [color=red, dx=1cm, dy=0.5cm, anchor=west, connector/looseness=2] (1cm, -1cm) {Goodbye};
 \end{tikzpicture}
 \end{document}
